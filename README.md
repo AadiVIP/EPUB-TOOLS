@@ -16,7 +16,7 @@ Perfect for personal ebook libraries, especially ripped or incomplete web novels
 - [Scripts](#scripts)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Workflow Example](#workflow-example)
+- [Workflow Example](#workflow example)
 - [Troubleshooting](#troubleshooting)
 - [Notes](#notes)
 - [License](#license)
@@ -95,7 +95,7 @@ At the end, `final_output.epub` will have:
 
 ---
 
-## Workflow Example (Diagram)
+## Workflow Example
 
 ```mermaid
 graph TD;

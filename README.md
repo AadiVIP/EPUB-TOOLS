@@ -146,7 +146,7 @@ graph TD;
 ## Notes
 - Always **make backups** before modifying EPUBs.
 - These scripts assume **standard EPUB structure**; heavily corrupted files may fail.
-- Title text for the title page (`LEVEL UP ZOMBIE`) is hardcoded but can be easily edited inside `add_title.py`.
+- Title text for the title page is hardcoded but can be easily edited inside `add_title.py`.
 - If you encounter encoding issues, ensure your EPUB uses UTF-8.
 
 ---

@@ -17,7 +17,9 @@ Perfect for personal ebook libraries, especially ripped or incomplete web novels
 - [Installation](#installation)
 - [Usage](#usage)
 - [Workflow Example](#workflow-example)
+- [Troubleshooting](#troubleshooting)
 - [Notes](#notes)
+- [License](#license)
 
 ---
 
@@ -105,14 +107,49 @@ graph TD;
 
 ---
 
+## Troubleshooting
+
+### My EPUB file looks blank after using the scripts!
+- **Possible Cause**: The `mimetype` file was compressed when rebuilding the EPUB.
+- **Solution**: These scripts already handle that, but if manually editing, ensure `mimetype` is the first file and **uncompressed** in the ZIP archive.
+
+### The cover image does not appear!
+- **Possible Cause**: 
+  - The reader app may cache the old cover.
+  - The cover file may not be correctly referenced inside the OPF file.
+- **Solution**: 
+  - Clear the app cache or reload the EPUB.
+  - Ensure you are using `inject_cover.py` correctly and that the cover file is a `.jpg`.
+
+### Chapter titles are still missing!
+- **Possible Cause**: 
+  - The EPUB has a broken or missing Table of Contents (TOC) file.
+- **Solution**:
+  - `fix_epub_titles.py` depends on a valid NAV (EPUB3) or NCX (EPUB2) file. If your EPUB doesn't have one, this script won't find titles.
+
+### EPUB reader says "corrupted file"!
+- **Possible Cause**:
+  - Incorrect EPUB structure (common if manually editing archives).
+- **Solution**:
+  - Always use the provided scripts to rebuild EPUBs properly.
+  - Make sure the structure has `mimetype` at root, and all internal links are valid.
+
+### Unicode or character encoding issues?
+- **Possible Cause**: 
+  - Some EPUBs may have non-UTF-8 encoded HTML files.
+- **Solution**: 
+  - Manually open the XHTML files and re-save them as UTF-8.
+  - You can also preprocess with BeautifulSoup to enforce UTF-8 encoding.
+
+---
+
 ## Notes
 - Always **make backups** before modifying EPUBs.
 - These scripts assume **standard EPUB structure**; heavily corrupted files may fail.
-- Title text for the title page (`LEVEL UP ZOMBIE`) is hardcoded but can be easily edited in `add_title.py`.
+- Title text for the title page (`LEVEL UP ZOMBIE`) is hardcoded but can be easily edited inside `add_title.py`.
 - If you encounter encoding issues, ensure your EPUB uses UTF-8.
 
 ---
 
 ## License
-MIT License — feel free to modify and share!
-
+MIT License — feel free to modify, improve, and share!

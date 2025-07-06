@@ -1,185 +1,286 @@
-# EPUB Tools Collection
+The current README is missing the new script heading fixer docx.py and does not mention it anywhere in the descriptions, usage, or workflow.
+All the other scripts are properly described.
 
-![Python](https://img.shields.io/badge/Python-3.6+-blue.svg) ![Shell](https://img.shields.io/badge/Shell-Bash-green.svg) ![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)
+I’ll update the README by:
 
-A suite of scripts and utilities to **enhance, extract, and package EPUB files** for personal ebook libraries, especially web novel rips or incomplete books.
+1. Adding heading fixer docx.py to the Table of Contents and Scripts section.
 
----
 
-## Table of Contents
+2. Briefly explaining its purpose and usage.
 
-* [Features](#features)
-* [Scripts](#scripts)
 
-  * [1. inject\_cover.py](#1-inject_coverpy)
-  * [2. fix\_epub\_titles.py](#2-fix_epub_titlespy)
-  * [3. add\_title.py](#3-add_titlepy)
-  * [4. extract\_chapters.py](#4-extract_chapterspy)
-  * [5. make\_epub.sh](#5-make_epubsh)
-* [Installation](#installation)
-* [Usage](#usage)
-* [Workflow Examples](#workflow-examples)
-* [Troubleshooting](#troubleshooting)
-* [Notes](#notes)
-* [License](#license)
+3. Optionally suggesting where it can fit into the workflow if it makes sense.
+
+
+
+Here’s the updated README:
+
 
 ---
 
-## Features
+📚 EPUB Tools Collection
 
-* **Inject Cover**: Replace or add a high-quality cover image.
-* **Fix Titles**: Auto-generate missing `<h1>` titles from the EPUB navigation files (EPUB 2/3).
-* **Add Title Page**: Create a custom title page as the book’s opening.
-* **Extract Chapters**: Dump chapter titles from an EPUB's TOC to a text file.
-* **Build EPUB**: Stitch Markdown-converted chapters into a single EPUB via Bash.
-* **Proper EPUB Packaging**: Maintains EPUB standards (e.g., `mimetype` first uncompressed).
-* **Lightweight** and **Fast**: Uses `lxml`, `BeautifulSoup`, and `pandoc` for quick processing.
+  
+
+A suite of scripts and utilities to enhance, extract, and package EPUB files for personal ebook libraries, especially web novel rips or incomplete books.
+
 
 ---
 
-## Scripts
+Table of Contents
 
-### 1. `inject_cover.py`
+Features
 
-* **Function**: Adds or overwrites the cover image in an EPUB.
-* **Command**:
+Scripts
 
-  ```bash
-  python inject_cover.py input.epub output.epub cover.jpg
-  ```
+1. inject_cover.py
 
-### 2. `fix_epub_titles.py`
+2. fix_epub_titles.py
 
-* **Function**: Inserts missing `<h1>` titles into each chapter HTML/XHTML, using the EPUB TOC (NCX or NAV).
-* **Command**:
+3. add_title.py
 
-  ```bash
-  python fix_epub_titles.py input.epub output.epub
-  ```
+4. extract_chapters.py
 
-### 3. `add_title.py`
+5. heading fixer docx.py
 
-* **Function**: Generates and inserts a styled title page at the start of an EPUB.
-* **Command**:
+6. make_epub.sh
 
-  ```bash
-  python add_title.py input.epub output.epub
-  ```
 
-### 4. `extract_chapters.py`
+Installation
 
-* **Function**: Reads an EPUB’s TOC and writes all chapter titles to `chapter.txt`.
-* **Command**:
+Usage
 
-  ```bash
-  python extract_chapters.py input.epub
-  ```
+Workflow Examples
 
-### 5. `make_epub.sh`
+Troubleshooting
 
-* **Function**: Converts a series of DOCX chapter files into Markdown, cleans headings, and assembles them into a single EPUB with metadata and TOC via `pandoc`.
-* **Usage**:
+Notes
 
-  1. Name your chapters `ch01.docx` through `ch21.docx` (or adjust the `seq` range).
-  2. Update the script’s `TITLE`, `AUTHOR`, `PUBLISHER`, and `OUT` variables.
-  3. Run:
+License
 
-     ```bash
-     chmod +x make_epub.sh
-     ./make_epub.sh
-     ```
-  4. Result: `The Weakest Link Book One.epub` (as defined in `OUT`).
+
 
 ---
 
-## Installation
+Features
 
-### Requirements
+Inject Cover: Replace or add a high-quality cover image.
 
-* Python 3.6+
-* Bash (for `make_epub.sh`)
-* Install Python dependencies:
+Fix Titles: Auto-generate missing <h1> titles from the EPUB navigation files (EPUB 2/3).
 
-  ```bash
-  pip install lxml beautifulsoup4 ebooklib
-  ```
-* **Pandoc** (for `make_epub.sh`):
+Add Title Page: Create a custom title page as the book’s opening.
 
-  ```bash
-  sudo apt-get install pandoc   # Debian/Ubuntu
-  ```
-* **Optional (Android/Termux)**:
+Extract Chapters: Dump chapter titles from an EPUB's TOC to a text file.
 
-  ```bash
-  pkg install python pandoc
-  pip install lxml beautifulsoup4 ebooklib
-  ```
+DOCX Heading Fixer: Fix misformatted or missing headings inside DOCX files.
+
+Build EPUB: Stitch Markdown-converted chapters into a single EPUB via Bash.
+
+Proper EPUB Packaging: Maintains EPUB standards (e.g., mimetype first uncompressed).
+
+Lightweight and Fast: Uses lxml, BeautifulSoup, and pandoc for quick processing.
+
+
 
 ---
 
-## Usage
+Scripts
+
+1. inject_cover.py
+
+Function: Adds or overwrites the cover image in an EPUB.
+
+Command:
+
+python inject_cover.py input.epub output.epub cover.jpg
+
+
+2. fix_epub_titles.py
+
+Function: Inserts missing <h1> titles into each chapter HTML/XHTML, using the EPUB TOC (NCX or NAV).
+
+Command:
+
+python fix_epub_titles.py input.epub output.epub
+
+
+3. add_title.py
+
+Function: Generates and inserts a styled title page at the start of an EPUB.
+
+Command:
+
+python add_title.py input.epub output.epub
+
+
+4. extract_chapters.py
+
+Function: Reads an EPUB’s TOC and writes all chapter titles to chapter.txt.
+
+Command:
+
+python extract_chapters.py input.epub
+
+
+5. heading fixer docx.py
+
+Function: Automatically fixes misformatted DOCX chapter headings. Useful for batch-fixing heading levels before EPUB creation.
+
+Command:
+
+python "heading fixer docx.py" input_folder/
+
+Notes:
+
+Processes all DOCX files in the provided folder.
+
+Ensures consistent heading styles for proper EPUB conversion.
+
+
+
+6. make_epub.sh
+
+Function: Converts a series of DOCX chapter files into Markdown, cleans headings, and assembles them into a single EPUB with metadata and TOC via pandoc.
+
+Usage:
+
+1. Name your chapters ch01.docx through ch21.docx (or adjust the seq range).
+
+
+2. Update the script’s TITLE, AUTHOR, PUBLISHER, and OUT variables.
+
+
+3. Run:
+
+chmod +x make_epub.sh
+./make_epub.sh
+
+
+4. Result: The Weakest Link Book One.epub (as defined in OUT).
+
+
+
+
+
+---
+
+Installation
+
+Requirements
+
+Python 3.6+
+
+Bash (for make_epub.sh)
+
+Install Python dependencies:
+
+pip install lxml beautifulsoup4 ebooklib
+
+Pandoc (for make_epub.sh):
+
+sudo apt-get install pandoc   # Debian/Ubuntu
+
+Optional (Android/Termux):
+
+pkg install python pandoc
+pip install lxml beautifulsoup4 ebooklib
+
+
+
+---
+
+Usage
 
 You can run each script standalone, or chain them for a full workflow:
 
-1. **Inject Cover**
-2. **Fix Chapter Titles**
-3. **Add Title Page**
-4. **Extract Chapter Names**
-5. **(Optional) Generate EPUB from DOCX**
+1. Inject Cover
+
+
+2. Fix Chapter Titles
+
+
+3. Add Title Page
+
+
+4. Extract Chapter Names
+
+
+5. (Optional) Fix DOCX Headings
+
+
+6. (Optional) Generate EPUB from DOCX
+
+
 
 Example chain:
 
-```bash
 python inject_cover.py raw.epub temp1.epub my_cover.jpg
 python fix_epub_titles.py temp1.epub temp2.epub
 python add_title.py temp2.epub temp3.epub
 python extract_chapters.py temp3.epub
+python "heading fixer docx.py" chapters_folder/
 ./make_epub.sh
-```
+
 
 ---
 
-## Workflow Examples
+Workflow Examples
 
-```mermaid
 graph TD;
     A[Raw EPUB] --> B[inject_cover.py]
     B --> C[fix_epub_titles.py]
     C --> D[add_title.py]
     D --> E[extract_chapters.py]
     E --> F[Markdown Chapters]
-    F --> G[make_epub.sh]
-    G --> H[Final EPUB]
-```
+    F --> G["heading fixer docx.py"]
+    G --> H[make_epub.sh]
+    H --> I[Final EPUB]
+
 
 ---
 
-## Troubleshooting
+Troubleshooting
 
-### EPUB appears blank
+EPUB appears blank
 
-* Ensure `mimetype` is uncompressed and first in archive.
-* Use the provided rebuild logic in scripts.
+Ensure mimetype is uncompressed and first in archive.
 
-### Cover image not updating
+Use the provided rebuild logic in scripts.
 
-* Clear reader cache.
-* Confirm `cover.jpg` path and `properties="cover-image"` in OPF.
 
-### Chapter titles missing after fix
+Cover image not updating
 
-* Verify EPUB has a valid NCX (EPUB2) or NAV (EPUB3) file.
+Clear reader cache.
 
----
+Confirm cover.jpg path and properties="cover-image" in OPF.
 
-## Notes
 
-* Always **backup** your EPUB before modifications.
-* Scripts assume **standard EPUB structure**; heavily corrupted files may fail.
-* You can edit the title page template in `add_title.py` to customize styling.
+Chapter titles missing after fix
+
+Verify EPUB has a valid NCX (EPUB2) or NAV (EPUB3) file.
+
+
 
 ---
 
-## License
+Notes
+
+Always backup your EPUB before modifications.
+
+Scripts assume standard EPUB structure; heavily corrupted files may fail.
+
+You can edit the title page template in add_title.py to customize styling.
+
+
+
+---
+
+License
 
 MIT License — freely modify and share.
+
+
+---
+
+If you want, I can prepare the updated README.md file for you as a downloadable file. Would you like that?
+

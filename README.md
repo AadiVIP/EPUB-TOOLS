@@ -1,23 +1,3 @@
-The current README is missing the new script heading fixer docx.py and does not mention it anywhere in the descriptions, usage, or workflow.
-All the other scripts are properly described.
-
-I’ll update the README by:
-
-1. Adding heading fixer docx.py to the Table of Contents and Scripts section.
-
-
-2. Briefly explaining its purpose and usage.
-
-
-3. Optionally suggesting where it can fit into the workflow if it makes sense.
-
-
-
-Here’s the updated README:
-
-
----
-
 📚 EPUB Tools Collection
 
   
